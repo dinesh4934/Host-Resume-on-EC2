@@ -10,10 +10,12 @@ jobs:
   deploy:
     name: Deploy to EC2 on master branch push
     runs-on: linux-latest
+runs-on: self-hosted
 
     steps:
       - name: Checkout the files
         uses: actions/checkout@v2
+runs-on: self-hosted
 
       - name: Deploy to Server 1
         uses: easingthemes/ssh-deploy@main
@@ -22,6 +24,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
+runs-on: self-hosted
 
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
